@@ -1,0 +1,141 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-gradient-dark: linear-gradient(135deg, #1e3c72, #2a5298);
+    --bg-gradient-light: linear-gradient(135deg, #e0eafc, #cfdef3);
+    --container-bg-dark: rgba(255, 255, 255, 0.1);
+    --container-bg-light: rgba(0, 0, 0, 0.1);
+    --text-color-dark: white;
+    --text-color-light: #333;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-gradient-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Sans Thai', Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    color: var(--text-color-dark);
+    background: var(--container-bg-dark);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.join-btn {
+    background: #ffffff;
+    color: #1e3c72;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.join-btn:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    background: linear-gradient(45deg, #ffffff, #e6e9ff);
+}
+
+.snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1rem;
+    flex-direction: column;
+}
+
+.status-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #2ecc71;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 100;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode {
+    background: var(--bg-gradient-light);
+}
+
+body.light-mode .container {
+    color: var(--text-color-light);
+    background: var(--container-bg-light);
+}
+
+body.light-mode .join-btn {
+    background: #2a5298;
+    color: white;
+}
